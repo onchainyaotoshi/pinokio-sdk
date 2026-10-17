@@ -18,6 +18,10 @@ WhatsApp session.
 - Implemented: `src/` (client, transport, error, types, internal, raw, modules).
 - Builds: `npm run build` → `dist/` (dual ESM/CJS, `.d.ts` + `.d.cts`, two entries).
 - Tests: `npm run test` → 25 passing, `fetch` stubbed. No test touches a real gateway.
+- Published: `@yaotoshi/pinokio-sdk@0.1.0` on 2026-10-17 with provenance (SLSA v1).
+- Live smoke (2026-10-17, dev gateway, published package): `login()` → `source: "session"`, token
+  628 chars, expiry ~30 days, 3.9s; `isExpired()` on that token → `expired: false`, `reason:
+  "valid"`, `checkedBy: "ginee"`. The fresh sign-in path (6–9s) was not exercised by this smoke.
 - Package lint: `npm run lint:pub` → publint clean, attw green for node16 (CJS+ESM) and bundler.
   The node10 column is ignored on purpose (`--profile node16`): subpath exports are not a node10
   concept and `engines.node` is `>=18`.
