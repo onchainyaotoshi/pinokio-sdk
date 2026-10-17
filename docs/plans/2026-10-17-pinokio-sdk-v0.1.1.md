@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox syntax for tracking.
 
-**Goal:** Publish @yaotoshi/pinokio-sdk v0.1.0 — a zero-dependency, typed client that runs scripts on a Pinokio gateway, with a curated domain module for the ginee-unofficial-auth workspace and a /raw escape hatch.
+**Goal:** Publish @yaotoshi/pinokio-sdk v0.1.1 — a zero-dependency, typed client that runs scripts on a Pinokio gateway, with a curated domain module for the ginee-unofficial-auth workspace and a /raw escape hatch.
 
 **Architecture:** One HTTP transport (start run, poll, fetch result) shared by every entry point. The main entry exposes only curated domain modules (pk.browserAutomation.gineeUnofficialAuth.login), so no caller — human or LLM — can invoke an arbitrary script ID from the default import. The /raw subpath exports runScript for scripts that have no module yet. Module and method names are derived mechanically from the script path, and a contract test keeps the mapping honest.
 
@@ -10,8 +10,9 @@
 
 **Spec:** [docs/design.md](../design.md)
 
-**Status:** executed 2026-10-17 — v0.1.0 published with provenance, live smoke green against the
-dev gateway. Deviations recorded in "Implementation notes" at the bottom of this file.
+**Status:** executed 2026-10-17 — v0.1.1 published with provenance, live smoke green against the
+dev gateway. (The 0.1.0 artifact was withdrawn before any consumer used it.) Deviations are
+recorded in "Implementation notes" at the bottom of this file.
 
 ## Global Constraints
 
@@ -1432,7 +1433,7 @@ git commit -m "feat(raw): add the opt-in runScript escape hatch"
 
 **Interfaces:**
 - Consumes: the finished surface from Tasks 1–4.
-- Produces: a published v0.1.0 plus the handoff document a fresh session needs.
+- Produces: a published v0.1.1 plus the handoff document a fresh session needs.
 
 - [ ] **Step 1: Copy the spec into the repo**
 
@@ -1489,7 +1490,7 @@ git commit -m "docs: add README, CLAUDE.md, and the design record"
 gh repo create onchainyaotoshi/pinokio-sdk --public --source=. --remote=origin --push
 ~~~
 
-- [ ] **Step 6: Publish v0.1.0 — manual gate, needs the owner**
+- [ ] **Step 6: Publish v0.1.1 — manual gate, needs the owner**
 
 Precondition: repository secret NPM_TOKEN (granular npm token with publish rights on @yaotoshi/*) exists on onchainyaotoshi/pinokio-sdk.
 
