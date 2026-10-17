@@ -1,6 +1,7 @@
 # @yaotoshi/pinokio-sdk
 
 [![CI](https://github.com/onchainyaotoshi/pinokio-sdk/actions/workflows/ci.yml/badge.svg)](https://github.com/onchainyaotoshi/pinokio-sdk/actions/workflows/ci.yml)
+[![Publish](https://github.com/onchainyaotoshi/pinokio-sdk/actions/workflows/publish.yml/badge.svg)](https://github.com/onchainyaotoshi/pinokio-sdk/actions/workflows/publish.yml)
 [![npm version](https://img.shields.io/npm/v/@yaotoshi%2Fpinokio-sdk?logo=npm)](https://www.npmjs.com/package/@yaotoshi/pinokio-sdk)
 [![license](https://img.shields.io/npm/l/@yaotoshi%2Fpinokio-sdk)](https://github.com/onchainyaotoshi/pinokio-sdk/blob/main/LICENSE)
 
