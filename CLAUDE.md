@@ -5,8 +5,8 @@
 ## What this is
 
 `@yaotoshi/pinokio-sdk` — a tiny, fully-typed, **zero-dependency** TypeScript client for the script
-API served by a Pinokio gateway (`https://pinokio.example.com` live, `https://pinokio.example.com`
-dev). Consumers install it from public npm, send a run, poll until it settles, and read the result.
+API served by a Pinokio gateway (the deployment URL is supplied by the consumer, never hardcoded
+here). Consumers install it from public npm, send a run, poll until it settles, and read the result.
 
 The browser is **not** in this package. A Pinokio gateway owns the Chromium session, the Ginee
 credentials, and the login flow; the SDK only talks HTTP to it. That is why this package can stay
@@ -28,7 +28,7 @@ WhatsApp session.
 
 ## Environment
 
-- `PINOKIO_BASE_URL` — gateway base URL (`https://pinokio.example.com` or live).
+- `PINOKIO_BASE_URL` — gateway base URL (whatever the consumer deploys).
 - `PINOKIO_API_KEY` — `pk_...` created at `<base URL>/apikeys`.
 
 `fromEnv()` reads exactly these two and names the missing one in the error.

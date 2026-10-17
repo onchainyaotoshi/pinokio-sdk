@@ -51,7 +51,7 @@ export function fromEnv(env: NodeJS.ProcessEnv = process.env): Pinokio {
   if (!baseUrl) {
     throw new PinokioSdkError(
       "MISSING_CONFIG",
-      "PINOKIO_BASE_URL is not set (e.g. https://pinokio.example.com).",
+      "PINOKIO_BASE_URL is not set — it must be the base URL of your Pinokio gateway.",
     );
   }
   if (!apiKey) {

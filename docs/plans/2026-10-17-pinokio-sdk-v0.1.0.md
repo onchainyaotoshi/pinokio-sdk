@@ -1183,7 +1183,7 @@ export function fromEnv(env: NodeJS.ProcessEnv = process.env): Pinokio {
   const baseUrl = env.PINOKIO_BASE_URL;
   const apiKey = env.PINOKIO_API_KEY;
   if (!baseUrl) {
-    throw new PinokioSdkError("MISSING_CONFIG", "PINOKIO_BASE_URL is not set (e.g. https://pinokio.example.com).");
+    throw new PinokioSdkError("MISSING_CONFIG", "PINOKIO_BASE_URL is not set — it must be the base URL of your Pinokio gateway.");
   }
   if (!apiKey) {
     throw new PinokioSdkError("MISSING_CONFIG", "PINOKIO_API_KEY is not set — create one at <base URL>/apikeys.");

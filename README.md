@@ -23,7 +23,7 @@ npm install @yaotoshi/pinokio-sdk
 ## Environment
 
 ~~~bash
-PINOKIO_BASE_URL=https://pinokio.example.com   # the gateway (no trailing slash needed)
+PINOKIO_BASE_URL=https://pinokio.example.com        # your gateway (no trailing slash needed)
 PINOKIO_API_KEY=pk_xxxx                              # created at <base URL>/apikeys
 ~~~
 
