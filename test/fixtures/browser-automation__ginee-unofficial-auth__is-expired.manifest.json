@@ -1,0 +1,78 @@
+{
+  "name": "is-expired",
+  "writeBehavior": "readOnly",
+  "params": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "token"
+    ],
+    "properties": {
+      "token": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8192,
+        "description": "Access token Ginee (JWT) mentah dari script `login`, tanpa prefix `Bearer `. Disimpan dan dikirim apa adanya."
+      },
+      "marginSeconds": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 86400,
+        "default": 0,
+        "description": "Buffer (detik); token dianggap tidak layak dipakai kalau sisa umurnya <= nilai ini. Default 0 = hanya berdasarkan klaim `exp`. Berguna untuk clock skew atau mencegah token dipakai di ambang expiry."
+      }
+    }
+  },
+  "returns": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "expired",
+      "reason",
+      "expiresAt",
+      "expiresInSeconds",
+      "checkedBy"
+    ],
+    "properties": {
+      "expired": {
+        "type": "boolean",
+        "description": "true = token tidak bisa/tidak layak dipakai (expired, invalid/dicabut, forced logout, atau kode tak dikenal). false = Ginee mengonfirmasi token masih valid."
+      },
+      "reason": {
+        "type": "string",
+        "enum": [
+          "valid",
+          "expired",
+          "expiring",
+          "invalid",
+          "logged_out",
+          "unknown"
+        ],
+        "description": "valid = SUCCESS; expired = exp JWT sudah lewat atau server TOKEN_EXPIRED; expiring = belum lewat tetapi sisa umur <= marginSeconds; invalid = TOKEN_INVALID (dicabut/rusak); logged_out = IAM_LOGOUT (di-kick/forced logout); unknown = kode non-SUCCESS tak dikenal (fail-closed)."
+      },
+      "expiresAt": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "Waktu kedaluwarsa dari klaim `exp` JWT (ISO 8601); null kalau token bukan JWT / tanpa exp yang valid. Bisa sudah lewat saat expired:true."
+      },
+      "expiresInSeconds": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "minimum": 0,
+        "description": "Sisa umur berdasarkan klaim `exp` (detik, dibulatkan ke bawah, minimum 0). 0 kalau sudah lewat/masuk margin; null kalau exp tidak ada. Nilai positif tidak menjamin token valid — lihat reason."
+      },
+      "checkedBy": {
+        "type": "string",
+        "enum": [
+          "local",
+          "ginee"
+        ],
+        "description": "local = diputuskan dari exp JWT tanpa network (hanya untuk expired/expiring); ginee = hasil validasi live ke account/detail."
+      }
+    }
+  }
+}

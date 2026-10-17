@@ -1,0 +1,98 @@
+{
+  "name": "login",
+  "writeBehavior": "readOnly",
+  "params": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "forceLogin": {
+        "type": "boolean",
+        "default": false,
+        "description": "Opsional. true = abaikan reuse sesi browser dan selalu sign-in baru (token ~30 hari), meskipun sesi yang ada masih valid. Cocok untuk flow sederhana: is-expired mengembalikan expired:true -> login {forceLogin:true}."
+      },
+      "minRemainingSeconds": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 2592000,
+        "default": 0,
+        "description": "Opsional. Kalau token sesi browser masih valid tetapi sisa umurnya <= nilai ini (detik), cookie sesi dihapus dan sign-in baru dipaksa supaya token baru punya umur penuh. Default 0 = selalu reuse sesi yang valid. Lebih hemat daripada forceLogin karena sesi yang masih fresh tetap dipakai. Pasangkan dengan `marginSeconds` di script `is-expired` memakai nilai yang sama. Harus lebih kecil dari umur token (~30 hari)."
+      }
+    }
+  },
+  "returns": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "token",
+      "tokenType",
+      "expiresAt",
+      "source",
+      "user"
+    ],
+    "properties": {
+      "token": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Access token Ginee (JWT). Pakai sebagai header `Authorization: Bearer <token>`."
+      },
+      "tokenType": {
+        "type": "string",
+        "enum": [
+          "Bearer"
+        ]
+      },
+      "source": {
+        "type": "string",
+        "enum": [
+          "session",
+          "login"
+        ],
+        "description": "session = token dari sesi browser yang sudah login dan masih valid; login = token baru hasil sign-in otomatis."
+      },
+      "expiresAt": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "Waktu kedaluwarsa token (ISO 8601) hasil decode klaim `exp` JWT; null kalau token bukan JWT / tanpa exp."
+      },
+      "user": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "username",
+          "countryCode",
+          "accountLevel"
+        ],
+        "properties": {
+          "id": {
+            "type": [
+              "string",
+              "number",
+              "null"
+            ]
+          },
+          "username": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "countryCode": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "accountLevel": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
