@@ -1,5 +1,9 @@
 # @yaotoshi/pinokio-sdk
 
+[![CI](https://github.com/onchainyaotoshi/pinokio-sdk/actions/workflows/ci.yml/badge.svg)](https://github.com/onchainyaotoshi/pinokio-sdk/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/@yaotoshi%2Fpinokio-sdk?logo=npm)](https://www.npmjs.com/package/@yaotoshi/pinokio-sdk)
+[![license](https://img.shields.io/npm/l/@yaotoshi%2Fpinokio-sdk)](https://github.com/onchainyaotoshi/pinokio-sdk/blob/main/LICENSE)
+
 Typed, zero-dependency TypeScript client for scripts running on a [Pinokio](https://github.com/onchainyaotoshi/pinokio) gateway.
 
 A Pinokio gateway hosts user-authored browser automations and functions and exposes each one as an asynchronous REST endpoint. The hard part of those scripts — the browser, the login session, the credentials — stays inside the gateway. This SDK is the typed way to ask the gateway to run one of them.
