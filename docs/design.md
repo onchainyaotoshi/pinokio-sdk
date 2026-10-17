@@ -38,7 +38,8 @@ cukup beda env var — bukan cabang kode) dan API key `pk_...` dari `/apikeys`.
   melepas provenance.
 - Alasan kedua: siklus rilis SDK (minor per modul baru) tidak boleh terikat deploy aplikasi.
 - GitHub `onchainyaotoshi/pinokio-sdk` (publik) → npm `@yaotoshi/pinokio-sdk`.
-- Spec ini disalin ke sana sebagai `docs/design.md`.
+- Dokumen ini **kanonik** di repo paket (`docs/design.md`). Rencana implementasinya ada di
+  `docs/plans/2026-10-17-pinokio-sdk-v0.1.0.md`.
 
 ## Permukaan publik v1
 

@@ -70,6 +70,13 @@ update `src/transport.ts` and this file together.
 | Bundling | tsup, two entries, `splitting: false`; shared symbols use `Symbol.for` |
 | Publish | public npm, GitHub Actions on `v*` tags with `--provenance` |
 
+## Documents
+
+- `docs/design.md` — design record: why a gateway client, the naming rule, protocol semantics,
+  error taxonomy, and the rule for when a workspace earns a module. Canonical copy.
+- `docs/plans/2026-10-17-pinokio-sdk-v0.1.0.md` — the task-by-task plan that produced v0.1.0,
+  with the deviations recorded at the bottom.
+
 ## Architecture
 
 ~~~
