@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox syntax for tracking.
 
-**Goal:** Publish @yaotoshi/pinokio-sdk v0.1.1 — a zero-dependency, typed client that runs scripts on a Pinokio gateway, with a curated domain module for the ginee-unofficial-auth workspace and a /raw escape hatch.
+**Goal:** Publish @yaotoshi/pinokio-sdk (first public tag: v0.1.2) — a zero-dependency, typed client that runs scripts on a Pinokio gateway, with a curated domain module for the ginee-unofficial-auth workspace and a /raw escape hatch.
 
 **Architecture:** One HTTP transport (start run, poll, fetch result) shared by every entry point. The main entry exposes only curated domain modules (pk.browserAutomation.gineeUnofficialAuth.login), so no caller — human or LLM — can invoke an arbitrary script ID from the default import. The /raw subpath exports runScript for scripts that have no module yet. Module and method names are derived mechanically from the script path, and a contract test keeps the mapping honest.
 
@@ -10,9 +10,10 @@
 
 **Spec:** [docs/design.md](../design.md)
 
-**Status:** executed 2026-10-17 — v0.1.1 published with provenance, live smoke green against the
-dev gateway. (The 0.1.0 artifact was withdrawn before any consumer used it.) Deviations are
-recorded in "Implementation notes" at the bottom of this file.
+**Status:** executed 2026-10-17 — published with provenance as **0.1.2** after the 0.1.0 and 0.1.1
+artifacts were withdrawn (deleting 0.1.0 removed the whole package from the registry, so a fresh
+version number was required). Live smoke green against the dev gateway. Deviations are recorded in
+"Implementation notes" at the bottom of this file.
 
 ## Global Constraints
 
