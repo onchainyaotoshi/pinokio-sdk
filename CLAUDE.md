@@ -150,6 +150,10 @@ To add one:
 - A single HTTP request is cut off by the edge at ~100s; keep the request timeout well below that and
   bound the poll loop with a separate deadline.
 - Tokens are credentials: never log them, never put them in error messages.
+- **Never delete a version from the npm UI to "fix" something.** Deleting 0.1.0 removed the entire
+  package (2026-10-17), forcing a re-registration as 0.1.2: version numbers cannot be reused, and the
+  immediate retry after the unpublish hit `E409 Conflict — failed to save packument`. Bump the
+  version and publish instead; after an unpublish, wait for registry processing before retrying.
 - `tsconfig` does not include `DOM`; `fetch`/`Response` types come from `@types/node`.
 - Interfaces are not assignable to `Record<string, unknown>`; `GineeLoginParams` is a `type` alias on
   purpose.
