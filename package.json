@@ -1,0 +1,46 @@
+{
+  "name": "@yaotoshi/pinokio-sdk",
+  "version": "0.1.0",
+  "description": "Typed, zero-dependency client for scripts running on a Pinokio gateway.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Yaotoshi",
+  "homepage": "https://github.com/onchainyaotoshi/pinokio-sdk#readme",
+  "repository": { "type": "git", "url": "git+https://github.com/onchainyaotoshi/pinokio-sdk.git" },
+  "bugs": { "url": "https://github.com/onchainyaotoshi/pinokio-sdk/issues" },
+  "keywords": ["pinokio", "sdk", "scripts", "automation", "typescript"],
+  "files": ["dist", "README.md", "LICENSE"],
+  "sideEffects": false,
+  "engines": { "node": ">=18" },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": { "import": "./dist/index.d.ts", "require": "./dist/index.d.cts" },
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./raw": {
+      "types": { "import": "./dist/raw.d.ts", "require": "./dist/raw.d.cts" },
+      "import": "./dist/raw.js",
+      "require": "./dist/raw.cjs"
+    }
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run build && npm run test",
+    "lint:pub": "publint && attw --pack --profile node16"
+  },
+  "publishConfig": { "access": "public", "registry": "https://registry.npmjs.org/" },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.3",
+    "@types/node": "^20.17.0",
+    "publint": "^0.3.0",
+    "tsup": "^8.3.0",
+    "typescript": "^5.7.0",
+    "vitest": "^4.1.2"
+  }
+}
