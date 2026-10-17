@@ -29,6 +29,15 @@ PINOKIO_API_KEY=pk_xxxx                              # created at <base URL>/api
 
 The API key is shown once at creation and starts with `pk_`. Every endpoint returns 401 without it.
 
+`fromEnv()` reads `process.env` only — it does not parse `.env` files (the package has zero
+dependencies). Load the file yourself:
+
+~~~bash
+node --env-file=.env your-script.mjs   # Node 20.6+
+~~~
+
+`.env` is gitignored in this repo; commit `.env.example` instead.
+
 ## Quick start
 
 ~~~ts
